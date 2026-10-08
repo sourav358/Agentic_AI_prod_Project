@@ -32,3 +32,6 @@ build/
 # Secrets
 *.pem
 *.key
+# Local AI/vector database
+.chromadb/
+.memory/
