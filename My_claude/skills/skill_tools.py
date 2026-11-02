@@ -16,7 +16,7 @@ logger = get_logger(__name__)
 # One SkillRegistry instance is shared for the entire process lifetime. 
 # It is created lazily on the first call to get_registry() — not at import time — 
 # so that Path.cwd() resolves to the target project directory, not the 
-# educosys_claude package directory. 
+# My_claude package directory. 
 # 
 # State transitions: 
 #   None  ──(first call to get_registry())──►  SkillRegistry (loaded) 
@@ -31,20 +31,20 @@ def get_registry() -> SkillRegistry:
    Return the process-wide SkillRegistry, building it on first call. 
  
    skills_dir resolution order: 
-     1. Read "skills.skills_dir" from config.yaml  →  e.g. ".educosys/skills" 
+     1. Read "skills.skills_dir" from config.yaml  →  e.g. ".project/skills" 
      2. Resolve relative to Path.cwd()             →  the target project root 
-        (educosys_claude is invoked from the project being analysed, so cwd() 
-         IS the target project, not the educosys package itself) 
+        (My_claude is invoked from the project being analysed, so cwd() 
+         IS the target project, not the project package itself) 
  
    Example: 
-     User runs educosys_claude from /home/user/my_project/ 
-     config.yaml says skills_dir: .educosys/skills 
-     → skills are loaded from /home/user/my_project/.educosys/skills/ 
+     User runs My_claude from /home/user/my_project/ 
+     config.yaml says skills_dir: .project/skills 
+     → skills are loaded from /home/user/my_project/.project/skills/ 
    """ 
    global _registry 
    if _registry is None: 
        skills_dir = Path.cwd() / config.get("skills", {}).get("skills_dir", 
-".educosys/skills") 
+".project/skills") 
        _registry = SkillRegistry(skills_dir) 
        _registry.load() 
        logger.info(f"SkillRegistry initialized from: {skills_dir}") 

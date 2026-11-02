@@ -12,7 +12,8 @@ from My_claude.tools.filesystem_tools import (
     list_directory,
     file_exists,
 )
-from My_claude.mcp.My_claude_mcp_client import get_My_claude_mcp_tools  
+from My_claude.mcp.My_claude_mcp_client import get_My_claude_mcp_tools
+from My_claude.skills.skill_tools import load_skill, build_skills_prompt   
  
  
 logger = get_logger(__name__) 
@@ -27,7 +28,11 @@ If you cannot find the answer in the codebase, say so explicitly."""
 async def build_agent(checkpointer): 
   """Create and return a LangChain agent with persistent memory.""" 
   llm = get_llm()
-  mcp_tools = await get_My_claude_mcp_tools()  
+  mcp_tools = await get_My_claude_mcp_tools()
+  skills_prompt = build_skills_prompt() 
+  full_prompt = SYSTEM_PROMPT 
+  if skills_prompt: 
+      full_prompt = SYSTEM_PROMPT + "\n\n" + skills_prompt   
   tools = [ 
       search_codebase, 
       run_command, 
