@@ -34,16 +34,16 @@ Agent
      ↓
 Final Response
 =======
-# Educosys Claude — RAG-Powered Code Assistant
+# My_claude — RAG-Powered Code Assistant
 
 An interactive, terminal-based coding assistant that can inspect a local codebase, answer questions using retrieval-augmented generation (RAG), use filesystem and terminal tools, connect to external Model Context Protocol (MCP) servers, and plan and execute multi-step software tasks with human approval.
 
 The application is built around LangChain/LangGraph agents and a configurable LLM/vector-store layer. It is designed as a local developer assistant and learning project.
 
  
-## What it does
+What it does
 
-### 1. Codebase question answering with RAG
+ 1. Codebase question answering with RAG
 
 - Parses supported source files and splits code into searchable chunks.
 - Builds a persistent vector index using ChromaDB or Qdrant, depending on configuration.
@@ -52,7 +52,7 @@ The application is built around LangChain/LangGraph agents and a configurable LL
 - Includes a semantic cache layer to reuse answers for sufficiently similar questions when enabled.
 - Supports manual re-indexing and filesystem watching so code changes can be reflected in the index.
 
-### 2. Agent tools
+ 2. Agent tools
 
 The primary agent is provided with tools for:
 
@@ -61,20 +61,20 @@ The primary agent is provided with tools for:
 - Running shell commands, including commands in a selected working directory.
 - Calling tools exposed by configured MCP servers.
 
-### 3. Planning and multi-step task execution
+ 3. Planning and multi-step task execution
 
 The `/plan` workflow turns a software goal into a structured execution plan. The plan contains tasks, dependencies, estimated effort, expected output files, acceptance criteria, risks, and assumptions.
 
 Before execution, the user can approve the plan, modify a task description, or reject it and request a revised plan. Approved plans and task states are stored in SQLite. The task orchestrator executes dependency-ready tasks, records results and failures, and supports recovery of interrupted work.
 
-### 4. Sessions and memory
+ 4. Sessions and memory
 
 - Conversation sessions can be created and switched.
 - LangGraph's SQLite checkpointer persists agent conversation state.
 - A summarization middleware is configured for conversation memory.
 - Task execution state is stored separately in a SQLite task database.
 
-### 5. Observability
+ 5. Observability
 
 Application modules use a shared Python logging helper. Application logs are emitted at DEBUG level while the root logging configuration suppresses most third-party library noise at WARNING level.
 
@@ -418,7 +418,4 @@ Use `/reindex`. The filesystem watcher also refreshes supported files after a sh
 - Avoid indexing secret files, credential stores, private keys, or large generated/runtime directories.
 - Do not expose `.git`, vector-store databases, memory databases, or local runtime state unless required.
 
-## Project status
-
-This README documents the implementation and configuration found in the supplied project archive. It is not a claim that every optional integration has been exercised end-to-end. Before presenting the project as production-ready, validate a clean installation, each configured provider/vector-store combination, MCP connectivity, task recovery, and the security boundaries around filesystem and terminal tools.
->>>>>>> 140c7d8 (Implementation done)
+ 
