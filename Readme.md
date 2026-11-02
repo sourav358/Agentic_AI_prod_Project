@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
  # Agentic AI Production Project
 
 An Agentic AI assistant built with Python, LangChain and MCP that can understand user instructions, decide which tools are required, and execute real-world tasks instead of only generating text.
@@ -40,24 +40,7 @@ An interactive, terminal-based coding assistant that can inspect a local codebas
 
 The application is built around LangChain/LangGraph agents and a configurable LLM/vector-store layer. It is designed as a local developer assistant and learning project.
 
-## Contents
-
-- [What it does](#what-it-does)
-- [Architecture](#architecture)
-- [Repository structure](#repository-structure)
-- [Technology stack](#technology-stack)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Environment variables](#environment-variables)
-- [Run the application](#run-the-application)
-- [CLI commands](#cli-commands)
-- [How the main workflows work](#how-the-main-workflows-work)
-- [Storage and generated data](#storage-and-generated-data)
-- [Important implementation notes](#important-implementation-notes)
-- [Troubleshooting](#troubleshooting)
-- [Security considerations](#security-considerations)
-
+ 
 ## What it does
 
 ### 1. Codebase question answering with RAG
